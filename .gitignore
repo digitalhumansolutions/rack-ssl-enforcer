@@ -23,3 +23,5 @@ Gemfile.lock
 ## PROJECT::SPECIFIC
 .ruby-gemset
 .ruby-version
+
+.idea/

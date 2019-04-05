@@ -36,6 +36,12 @@ module Rack
 
     def call(env)
       @request = Rack::Request.new(env)
+      p 'debugging SSL'
+      p @options[:ignore]
+      p @request.host
+      p @request.fullpath
+      p "Ignore: #{ignore?}"
+      p "Enforce SSL: #{enforce_ssl?}"
 
       return @app.call(env) if ignore?
 

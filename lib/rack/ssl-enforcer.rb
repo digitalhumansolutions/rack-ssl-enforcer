@@ -36,12 +36,14 @@ module Rack
 
     def call(env)
       @request = Rack::Request.new(env)
-      p 'debugging SSL'
-      p @options[:ignore]
-      p @request.host
-      p @request.fullpath
-      p "Ignore: #{ignore?}"
-      p "Enforce SSL: #{enforce_ssl?}"
+      Rails.logger.debug "=" * 50
+      Rails.logger.debug  'debugging SSL'
+      Rails.logger.debug  @options[:ignore]
+      Rails.logger.debug  @request.host
+      Rails.logger.debug  @request.fullpath
+      Rails.logger.debug  "Ignore: #{ignore?}"
+      Rails.logger.debug  "Enforce SSL: #{enforce_ssl?}"
+      Rails.logger.debug "=" * 50
 
       return @app.call(env) if ignore?
 

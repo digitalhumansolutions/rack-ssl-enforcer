@@ -73,6 +73,8 @@ module Rack
     end
 
     def ignore?
+      return @request.fullpath.include?('.well-known/')
+
       if @options[:ignore]
         rules = [@options[:ignore]].flatten.compact
         rules.any? do |rule|
